@@ -9,7 +9,3 @@ CREATE TABLE clients (
     created DATETIME DEFAULT NULL,
     modified DATETIME DEFAULT NULL
 );
-
-/* Then insert some articles for testing: */
-INSERT INTO clients (first_name,last_name,phone_number,email,notes,created)
-    VALUES ('David','Austin','403-630-2419','daustin@gmail.com', 'Primary client, #1 rating', NOW());
