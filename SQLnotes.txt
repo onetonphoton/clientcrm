@@ -1,0 +1,15 @@
+/* First, create our articles table: */
+CREATE TABLE clients (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    phone_number VARCHAR(25),
+    email VARCHAR(50),
+    notes TEXT,
+    created DATETIME DEFAULT NULL,
+    modified DATETIME DEFAULT NULL
+);
+
+/* Then insert some articles for testing: */
+INSERT INTO clients (first_name,last_name,phone_number,email,notes,created)
+    VALUES ('David','Austin','403-630-2419','daustin@gmail.com', 'Primary client, #1 rating', NOW());
