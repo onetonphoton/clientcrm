@@ -123,4 +123,19 @@ class ClientsController extends AppController
       $this->set('_serialize', ['clients']);
 
     }
+
+    /**
+     * XML method - using /clientcrm/clients/xml.xml to obtain a xml formated response
+     *
+     * @return \Cake\Network\Response|null
+     */
+
+    public function xml()
+    {
+      $this->viewBuilder()->layout('ajax');
+      $clients = $this->paginate($this->Clients);
+      $this->set(compact('clients'));
+      $this->set('_serialize', ['clients']);
+
+    }
 }
