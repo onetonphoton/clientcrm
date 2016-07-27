@@ -111,16 +111,24 @@ class ClientsController extends AppController
 
     /**
      * JSON method - using /clientcrm/clients/json.json to obtain a json response
-     *
+     * if wanting to get a specific client ID returned as json use /clientcrm/clients/json/:id.json
      * @return \Cake\Network\Response|null
      */
 
-    public function json()
+    public function json($id = null)
     {
       $this->viewBuilder()->layout('ajax');
-      $clients = $this->paginate($this->Clients);
-      $this->set(compact('clients'));
-      $this->set('_serialize', ['clients']);
+      if ($id != null) {
+        $client = $this->Clients->get($id, [
+            'contain' => []
+        ]);
+        $this->set('clients', $client);
+        $this->set('_serialize', ['clients']);
+      } else {
+        $clients = $this->paginate($this->Clients);
+        $this->set(compact('clients'));
+        $this->set('_serialize', ['clients']);
+     }
 
     }
 
