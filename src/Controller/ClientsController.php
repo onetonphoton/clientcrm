@@ -108,4 +108,19 @@ class ClientsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * JSON method - using /clientcrm/clients/json.json to obtain a json response
+     *
+     * @return \Cake\Network\Response|null
+     */
+
+    public function json()
+    {
+      $this->viewBuilder()->layout('ajax');
+      $clients = $this->paginate($this->Clients);
+      $this->set(compact('clients'));
+      $this->set('_serialize', ['clients']);
+
+    }
 }
